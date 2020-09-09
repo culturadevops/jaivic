@@ -16,23 +16,22 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/culturadevops/jaivic/services"
 	"github.com/spf13/cobra"
 )
 
 // cfgCmd represents the cfg command
 var cfgCmd = &cobra.Command{
-	Use:   "cfg",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Use:   "cfg [mysql] o [yml]",
+	Short: "Crea config como mysql y yml ",
+	Long: `crea archivos dentro de la carpeta config puedes escoger
+	entre mysql y yml`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("cfg called")
+		if args[0] == "mysql" {
+			services.VarSrv.CreateConfigMysqlToml()
+		} else if args[0] == "yml" {
+			services.VarSrv.CreateConfigYml(args[1])
+		}
 	},
 }
 

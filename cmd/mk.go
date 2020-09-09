@@ -24,7 +24,7 @@ import (
 // mkCmd represents the mk command
 var mkCmd = &cobra.Command{
 	Use:   "mk",
-	Short: "Crea un archivo [mdl] [rts]",
+	Short: "Crea un archivo [cfg][lib][docker][ctl][mid][mdl][rts]",
 	Long:  ``,
 
 	Run: func(cmd *cobra.Command, args []string) {
@@ -34,6 +34,7 @@ var mkCmd = &cobra.Command{
 }
 
 func init() {
+
 	rootCmd.AddCommand(mkCmd)
 
 	// Here you will define your flags and configuration settings.

@@ -20,32 +20,30 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// rtsCmd represents the rts command
-var rtsCmd = &cobra.Command{
-	Use:   "rts",
-	Short: "Crea archivos routes",
+// dockerCmd represents the docker command
+var dockerCmd = &cobra.Command{
+	Use:   "docker",
+	Short: "Crea un archivo docker",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		if flags, _ := cmd.Flags().GetBool("api"); flags {
-			services.VarSrv.CreateRtsApi(args[0])
-		} else {
-			services.VarSrv.CreateRtsDefault(args[0])
+		if args[0] == "go" {
+			services.VarSrv.DockerGo()
+		} else if args[0] == "php" {
+			services.VarSrv.DockerPhp()
 		}
-
 	},
 }
 
 func init() {
-	rtsCmd.Flags().BoolP("api", "a", false, "crea una plantilla crud")
-	mkCmd.AddCommand(rtsCmd)
+	mkCmd.AddCommand(dockerCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// rtsCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// dockerCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// rtsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// dockerCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

@@ -27,17 +27,17 @@ var mdlCmd = &cobra.Command{
 	Long:  ``,
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		if flags, _ := cmd.Flags().GetBool("completa"); flags {
-			services.VarMdl.Create(args[0], "2")
+		if flags, _ := cmd.Flags().GetBool("crud"); flags {
+			services.VarSrv.CreateMdlCrud(args[0])
 		} else {
-			services.VarMdl.Create(args[0], "1")
+			services.VarSrv.CreateMdlDefault(args[0])
 		}
 	},
 }
 
 func init() {
-	mdlCmd.Flags().BoolP("simple", "s", false, "Help message for toggle")
-	mdlCmd.Flags().BoolP("completa", "c", false, "Help message for toggle")
+
+	mdlCmd.Flags().BoolP("crud", "c", false, "crea una plantilla crud")
 	mkCmd.AddCommand(mdlCmd)
 
 	// Here you will define your flags and configuration settings.

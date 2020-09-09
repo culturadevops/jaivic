@@ -16,27 +16,27 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/culturadevops/jaivic/services"
 	"github.com/spf13/cobra"
 )
 
 // midCmd represents the mid command
 var midCmd = &cobra.Command{
 	Use:   "mid",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Crea archivos middlewares",
+	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("mid called")
+		if flags, _ := cmd.Flags().GetBool("parent"); flags {
+			services.VarSrv.CreateMidDefaultToRoutes(args[0], args[1])
+		} else {
+			services.VarSrv.CreateMidDefault(args[0])
+		}
+
 	},
 }
 
 func init() {
+	midCmd.Flags().BoolP("parent", "p", false, "cambia el destino del mid a un routes, sino coloca este flag el mid se pondra en main")
 	mkCmd.AddCommand(midCmd)
 
 	// Here you will define your flags and configuration settings.

@@ -31,8 +31,8 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "jaivic",
-	Short: "A brief description of your application",
-	Long:  `hola mundooooooooooo`,
+	Short: "CLI para crear archivos para el framework echo",
+	Long:  ``,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -54,11 +54,11 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jaivic.yaml)")
+	//rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.jaivic.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -85,6 +85,8 @@ func initConfig() {
 	if viper.GetString("default.templatefolder") == "" {
 		fmt.Println("falta templatefolder en el archivo " + file)
 		os.Exit(1)
+	} else {
+		viper.SetDefault("homedir", home+"/"+viper.GetString("default.templatefolder"))
 	}
 
 }
