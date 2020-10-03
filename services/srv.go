@@ -24,6 +24,7 @@ func (t *Srv) CreateMapDefault(fileName string) map[string]string {
 	return MapForReplace
 }
 func (t *Srv) GetTempleteName(origFolderName string, filesVersionName string) string {
+	//fmt.Println(viper.GetString("homedir") + "/" + origFolderName + "/" + filesVersionName + ".stub")
 	return viper.GetString("homedir") + "/" + origFolderName + "/" + filesVersionName + ".stub"
 }
 
