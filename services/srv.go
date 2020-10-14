@@ -2,7 +2,7 @@ package services
 
 import (
 	"strings"
-
+"fmt"
 	"github.com/culturadevops/jgt/jio"
 	"github.com/spf13/viper"
 )
@@ -24,7 +24,7 @@ func (t *Srv) CreateMapDefault(fileName string) map[string]string {
 	return MapForReplace
 }
 func (t *Srv) GetTempleteName(origFolderName string, filesVersionName string) string {
-	//fmt.Println(viper.GetString("homedir") + "/" + origFolderName + "/" + filesVersionName + ".stub")
+fmt.Println(viper.GetString("homedir") + "/" + origFolderName + "/" + filesVersionName + ".stub")
 	return viper.GetString("homedir") + "/" + origFolderName + "/" + filesVersionName + ".stub"
 }
 
